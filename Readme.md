@@ -2,30 +2,33 @@
 *Maciej Bak*  
 *Swiss Institute of Bioinformatics*
 
-This is a very small repository that presents the libraries needed for efficient statistical computing in R interfacing to C++. Functions presented are useful to build statistical models based on likelihood and optimize their parameters.  
-A gentle introduction to Rcpp may be found at:  
-[http://adv-r.had.co.nz/Rcpp.html][link1]  
-A more comprehensive guide is available at:  
-[https://teuder.github.io/rcpp4everyone_en][link2]  
+Toy exampes on the usage of C++ Armadillo package for linear algebra and simple statistics as well as other custom functions useful for statistical modelling. These resources should be enough to implement complex Bayesian models, fit the parameters efficiently (likelihood optimization) and minimize the runtime on big datasets. Functions' logic and sygnatures are described within the main source file of this repository.
 
-// Armadillo documentation is available at:
-// http://arma.sourceforge.net/docs.html
+## Dependancies, Installation & Tests
+The only external library requred to test this repository is teh C++ library [Armadillo][link1].  
+Extensive notes on the installation are provided in the [FAQ][link2].  
+A comprehensive description of the classes and their methods can be found in the [Documentation][link3].  
+Make note that Armadillo requires [BLAS][link4] and [LAPACK][link5] for marix operations.
 
-## Dependencies
-G++, ARMADILLO 9.5
-The software has been tested with R version 3.5.1. Required packages:
-* Rcpp (>1.0.0)
-* numDeriv (>2016.8-1)
-* tictoc (>1.0)
-
-Requirements might be installed directly from within the R interpreter:
+The following repository has been tested on Linux Ubuntu 14.04.4 with g++ 4.8.4 and Armadillo 9.500.2 
 ```
-$ R
-> install.packages(c("Rcpp", "numDeriv", "tictoc"))
-> q()
+$ # At first - make sure the system is updated
+$ sudo apt update
+$ sudo apt upgrade
+$ # Install BLAS and LAPACK
+$ sudo apt install cmake libopenblas-dev liblapack-dev
+$ # Download and extract the latest table release of Armadillo
+$ # Assuming it is in: $HOME/Downloads/arma: install the library
+$ cd $HOME/Downloads/arma
+$ cmake .
+$ make
+$ sudo make install
+$ # Compile and run the examples in this repository
+$ # Assuming it is in: $HOME/cpp_stat_comp: install the library
+$ cd $HOME/cpp_stat_comp
+$ g++ main.cpp -o test -DARMA_DONT_USE_WRAPPER -lopenblas -llapack -std=c++11 -O2
+$ ./test
 ```
-// Compile with:
-// $ g++ -std=c++11 main.cpp -o exe -O2 -larmadillo
 
 ## Repository
 This repository contains six files:
@@ -33,17 +36,17 @@ This repository contains six files:
 | File | Description |
 | ------ | ------ |
 | README.md | (this file) |
-| tests.R | R script with example calls of C++ functions |
-| tests.cpp | C++ functions with optimisation-related algorithms |
+| main.cpp | main C++ source file with all the examples |
+| numDeriv.c | C library with functions to approximate gradient and hessian of a given multivariate function |
 | zeroin.c | C routine for root finding of an univariate function |
 | modified_optim.c | modified version of the C file with a method to minimize a given multivariate function |
 | LICENSE | The GNU General Public License v3.0 |
 
-These libraries and functions should be enough to implement complex Bayesian models, fit the parameters efficiently and optimize the runtime on big datasets. Functions' logic and sygnatures are described within the files above.
-
 ## License
 GNU General Public License 
 
-
-[link1]: <http://adv-r.had.co.nz/Rcpp.html>
-[link2]: <https://teuder.github.io/rcpp4everyone_en>
+[link1]: <http://arma.sourceforge.net/>
+[link2]: <http://arma.sourceforge.net/faq.html>
+[link3]: <http://arma.sourceforge.net/docs.html>
+[link4]: <http://www.netlib.org/blas/>
+[link5]: <http://www.netlib.org/lapack/>
