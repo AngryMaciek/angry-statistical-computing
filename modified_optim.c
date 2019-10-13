@@ -17,6 +17,11 @@
  *  https://www.R-project.org/Licenses/
  */
 
+// MODIFIED:
+// Maciej Bak
+// Swiss Institute of Bioinformatics
+// 1.06.2019
+
 #ifdef HAVE_CONFIG_H
 #include <config.h>
 #endif
