@@ -43,7 +43,7 @@ This repository contains six files:
 | LICENSE | The GNU General Public License v3.0 |
 
 ## License
-GNU General Public License v3.0
+Apache 2.0
 
 [link1]: <http://arma.sourceforge.net/>
 [link2]: <http://arma.sourceforge.net/faq.html>
