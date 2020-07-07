@@ -24,8 +24,8 @@ $ cmake .
 $ make
 $ sudo make install
 $ # Compile and run the examples in this repository
-$ # Assuming it is in: $HOME/cpp_stat_comp: install the library
-$ cd $HOME/cpp_stat_comp
+$ # Assuming it is in: $HOME/angry-statistical-computing: install the library
+$ cd $HOME/angry-statistical-computing
 $ g++ main.cpp -o test -DARMA_DONT_USE_WRAPPER -lopenblas -llapack -std=c++11 -O2
 $ ./test
 ```
